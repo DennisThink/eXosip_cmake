@@ -1,0 +1,1 @@
+add_subdirectory(./libosip2-5.3.1/)
