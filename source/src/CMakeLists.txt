@@ -2,6 +2,17 @@ project(eXosip)
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${THIRD_PARTY_LIB_TARGET_DIRECTORY})  
 SET(LIBRARY_OUTPUT_PATH ${THIRD_PARTY_LIB_TARGET_DIRECTORY}) 
 
+
+if(CMAKE_HOST_LINUX)
+add_compile_options(-DHAVE_SYS_SOCKET_H)
+add_compile_options(-DHAVE_NETINET_IN_H)
+add_compile_options(-DHAVE_ARPA_INET_H)
+add_compile_options(-DHAVE_NETDB_H)
+add_compile_options(-DHAVE_SYS_EPOLL_H)
+add_compile_options(-DHAVE_FCNTL_H)
+add_compile_options(-DINET6_ADDRSTRLEN=128)
+add_compile_options(-DHAVE_LIMITS_H)
+endif()
 include_directories(${EXOSIP_SOURCE_DIR}/third_party/libosip2-5.3.1/include/)
 include_directories(${EXOSIP_SOURCE_DIR}/include/)
 

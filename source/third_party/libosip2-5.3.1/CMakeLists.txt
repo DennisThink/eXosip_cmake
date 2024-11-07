@@ -1,6 +1,14 @@
 project(libosip2)
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${THIRD_PARTY_LIB_TARGET_DIRECTORY})  
 SET(LIBRARY_OUTPUT_PATH ${THIRD_PARTY_LIB_TARGET_DIRECTORY})
+if(CMAKE_HOST_LINUX)
+add_compile_options(-DHAVE_STRUCT_TIMEVAL)
+add_compile_options(-DHAVE_PTHREAD)
+add_compile_options(-DHAVE_SEMAPHORE_H)
+add_compile_options(-DHAVE_SYS_UNISTD_H)
+add_compile_options(-DHAVE_FCNTL_H)
+endif()
+
 include_directories(${EXOSIP_SOURCE_DIR}/third_party/libosip2-5.3.1/include/)
 SET(LIBOSIP2_SOURCE_FILE 
 ./src/osip2/fsm.h
@@ -66,4 +74,4 @@ SET(LIB_OSIP_PARSER2_SOURCE_FILE
 ./src/osipparser2/sdp_accessor.c
 ./src/osipparser2/sdp_message.c
 )
-add_library(libosip2 ${LIBOSIP2_SOURCE_FILE} ${LIB_OSIP_PARSER2_SOURCE_FILE})
+add_library(osip2 ${LIBOSIP2_SOURCE_FILE} ${LIB_OSIP_PARSER2_SOURCE_FILE})
