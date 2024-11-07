@@ -1,12 +1,15 @@
 project(libosip2)
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${THIRD_PARTY_LIB_TARGET_DIRECTORY})  
 SET(LIBRARY_OUTPUT_PATH ${THIRD_PARTY_LIB_TARGET_DIRECTORY})
+
 if(CMAKE_HOST_LINUX)
 add_compile_options(-DHAVE_STRUCT_TIMEVAL)
 add_compile_options(-DHAVE_PTHREAD)
 add_compile_options(-DHAVE_SEMAPHORE_H)
 add_compile_options(-DHAVE_SYS_UNISTD_H)
 add_compile_options(-DHAVE_FCNTL_H)
+else()
+#add_compile_options(-DWIN32)
 endif()
 
 include_directories(${EXOSIP_SOURCE_DIR}/third_party/libosip2-5.3.1/include/)

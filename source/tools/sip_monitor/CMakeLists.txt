@@ -9,6 +9,7 @@ include_directories(${EXOSIP_SOURCE_DIR}/third_party/getopt_for_windows/)
 include_directories(${EXOSIP_SOURCE_DIR}/include/)
 
 link_directories(${THIRD_PARTY_LIB_TARGET_DIRECTORY})
+
 if(CMAKE_HOST_WIN32)
 add_executable(sip_monitor ./sip_monitor.c ${EXOSIP_SOURCE_DIR}/third_party/getopt_for_windows/getopt.c)
 target_link_libraries(sip_monitor exosip.lib)

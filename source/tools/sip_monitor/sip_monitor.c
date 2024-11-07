@@ -26,7 +26,15 @@
 #endif
 #endif
 
-#include <sys/time.h>
+//#include <sys/time.h>
+
+//Dennis Begin
+#ifdef WIN32
+#include <WinSock2.h>
+#include "getopt.h"
+#endif
+
+//Dennis End
 
 #include <osip2/osip_mt.h>
 #include <eXosip2/eXosip.h>
@@ -617,7 +625,10 @@ int main(int argc, char *argv[]) {
   }
 
   if (fork) {
-    err = daemon(1, 0);
+    
+    //Dennis Begin
+    //err = daemon(1, 0);
+    //Dennis End
     if (err < 0) {
       syslog_wrapper(LOG_ERR, "REGISTRATION REPORT:[FAILURE] [%s][duration:0,000s] daemon mode failed", transport);
       exit(1);

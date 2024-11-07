@@ -20,14 +20,6 @@
 #ifndef _OSIP_H_
 #define _OSIP_H_
 
-
-//Dennis Begin
-#ifdef WIN32
-#include <winsock.h>
-#endif
-
-//Dennis End
-
 #include <osipparser2/osip_const.h>
 
 /* Time-related functions and data types */
