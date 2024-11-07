@@ -128,6 +128,10 @@ typedef struct regparam_t {
 
 struct eXosip_t *context_eXosip;
 
+/*
+* ./sip_reg.exe -r sip:192.168.31.109:5060 -u sip:1002@192.168.31.109 -c "sip:1002@192.168.31.109:5060" -U 1002 -P 1234 -e 3600 -d
+*  we use this command to connect the SIP server
+*/
 int main(int argc, char *argv[]) {
   int c;
   int port = 5060;

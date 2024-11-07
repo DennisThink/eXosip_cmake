@@ -26,7 +26,9 @@
 #endif
 #endif
 
-#include <sys/time.h>
+//Dennis Begin
+//#include <sys/time.h>
+//Dennis End
 
 #include <osip2/osip_mt.h>
 #include <eXosip2/eXosip.h>
@@ -36,6 +38,14 @@
 #define _GNU_SOURCE
 #include <getopt.h>
 #endif
+
+//Dennis Begin
+#ifdef WIN32
+#include <winsock.h>
+#include "getopt.h"
+#endif
+//Dennis End
+
 
 #define PROG_NAME "sip_storm"
 #define SYSLOG_FACILITY LOG_DAEMON
@@ -743,7 +753,9 @@ int main(int argc, char *argv[]) {
   }
 
   if (fork) {
-    err = daemon(1, 0);
+    //Dennis Begin
+    //err = daemon(1, 0);
+    //Dennis End
     if (err < 0) {
       syslog_wrapper(LOG_ERR, "REGISTRATION REPORT:[FAILURE] [%s][duration:0,000s] daemon mode failed", transport);
       exit(1);
